@@ -1,0 +1,15 @@
+#listContainer {
+  max-width: 25%;
+}
+
+.to-remove {
+  background-color: #baddad;
+}
+
+h1 {
+  margin-left:40%;
+}
+
+.delete-selected {
+  margin-bottom: 15px;
+}
