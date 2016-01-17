@@ -2,26 +2,32 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/style/base.css">
     <link rel="stylesheet" href="/style/module.css">
     <title></title>
   </head>
   <body>
     <section class="main-wrap">
-      <header>
+      <header class="dropshadow">
         <h1>To Do!</h1>
       </header>
+        <nav>
+          <ul>
+            <li class="nav-li dropshadow" id="add-list">Add List</li>
+          </ul>
+        </nav>
       <form class="list" action="index.html" method="post">
         <label>
-          <input type="text" id="newItem" placeholder="Add New Item">
+          <input type="text" id="newItem" class="dropshadow" placeholder="Add New Item">
         </label>
-        <button type="submit" name="button" class="add-item">Add Item</button>
+        <button type="submit" name="button" class="add-item dropshadow">Add Item</button>
       </form>
-      <ul id="list"></ul>
-      <button type="submit" name="button" class="delete-selected">Remove Selected</button>
+      <ul id="list" class="dropshadow"></ul>
+      <button type="submit" name="button" class="delete-selected dropshadow">Remove Selected</button>
   </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="list.js"></script>
-    <script src="listView.js"></script>
+    <script src="tabs.js"></script>
   </body>
 </html>

@@ -8,7 +8,7 @@ listItem.handleButton = function(){
     event.preventDefault();
     var item = $('#newItem').val();
     if (item) {
-      $('#list').append('<div class="itemDiv"><li class="newList">' + item + '</li></div>');
+      $('#list').append('<li class="newList dropshadow">' + item + '</li>');
       $('#newItem').val('');
     };
     listItem.all.push(item);
@@ -17,7 +17,7 @@ listItem.handleButton = function(){
 };
 
 listItem.addRemove = function(){
-  $('ul').on('click','li', function(){
+  $('#list').on('click','li', function(){
     $(this).toggleClass('newList');
     $(this).toggleClass('to-remove');
     if ($('li.to-remove')) {
@@ -48,7 +48,7 @@ listItem.onPageLoad = function(){
   listItem.all = JSON.parse(localStorage.getItem('todo'));
   listItem.all.forEach(function(item){
     var item = item;
-    $('#list').append('<div class="itemDiv"><li class="newList">' + item + '</li></div>');
+    $('#list').append('<div class="itemDiv"><li class="newList dropshadow">' + item + '</li></div>');
   });
 };
 
