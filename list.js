@@ -10,8 +10,8 @@ listItem.handleButton = function(){
     if (item) {
       $('#list').append('<li class="newList dropshadow">' + item + '</li>');
       $('#newItem').val('');
+      listItem.all.push(item);
     };
-    listItem.all.push(item);
     localStorage.setItem('todo',JSON.stringify(listItem.all));
   });
 };
