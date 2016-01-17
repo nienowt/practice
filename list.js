@@ -8,10 +8,13 @@ listItem.handleButton = function(){
     event.preventDefault();
     var item = $('#newItem').val();
     if (item) {
-      $('#list').append('<li class="newList dropshadow">' + item + '</li>');
-      $('#newItem').val('');
-      listItem.all.push(item);
+      if ($('li').hasClass('tab-select')) {
+        var tabClass = $('.tab-select').text();
+        $('#list').append('<li class="newList dropshadow '+ tabClass +'">' + item + '</li>');
+        $('#newItem').val('');
+      };
     };
+    listItem.all.push(item);
     localStorage.setItem('todo',JSON.stringify(listItem.all));
   });
 };
@@ -51,6 +54,8 @@ listItem.onPageLoad = function(){
     $('#list').append('<div class="itemDiv"><li class="newList dropshadow">' + item + '</li></div>');
   });
 };
+
+
 
 $('.delete-selected').hide();
 listItem.onPageLoad();

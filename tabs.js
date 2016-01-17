@@ -1,25 +1,53 @@
 var tab = {};
 
-tab.handleClick = function(){
-  $('.nav-li').on('click',function(){
+tab.all = [];
+
+tab.handleAdd = function(){
+  $('#add-list').on('click',function(){
     $(this).toggleClass('tab-select');
-    if ($(this).hasClass('tab-select')) {
-      $('nav ul').append('<li class="nav-li add"><input type="text" placeholder="List Name" class="new-list dropshadow"></input><button type="submit" class="dropshadow addList">Add</button></li>');
-    };
+    $('.add').toggle();
+  });
+};
+
+tab.handleClick = function(){
+  $('#nav-tabs').on('click', 'li', function(){
+    $('li').removeClass('tab-select');
+    $(this).toggleClass('tab-select');
+    var listCategory = $(this).text();
+    $('li').hasClass(listCategory).show; //show only list items with tab-specific class (hopefully)
   });
 };
 
 tab.handleButton = function(){
   $('nav ul').on('click', 'button', function(){
-    $('.add').hide();
     var newListTab = $('.new-list').val();
-    $('nav ul').append('<li class="nav-li dropshadow newTab">' + newListTab + '</li>');
+    $('.add').hide();
+    if (newListTab) {
+      $('#nav-tabs').append('<li class="nav-li dropshadow newTab">' + newListTab + '</li>');
+      tab.all.push(newListTab);
+    };
+    localStorage.setItem('tabs', JSON.stringify(tab.all));
     $('li').removeClass('tab-select');
     $('.newTab').toggleClass('tab-select');
     $('#list').hide();
-    $('body').append('<ul class ="' + newListTab + '"></ul>');
   });
 };
 
+tab.onPageLoad = function(){
+  if(localStorage.tabs) {
+    tab.all = JSON.parse(localStorage.getItem('tabs'));
+    tab.all.forEach(function(item){
+      var item = item;
+      $('#nav-tabs').append('<div class="itemDiv"><li class="nav-li dropshadow">' + item + '</li></div>');
+    });
+  };
+  $('.add').hide();
+};
+
+tab.onPageLoad();
 tab.handleClick();
+tab.handleAdd();
 tab.handleButton();
+
+
+//want to show only those list items tagged with the selected tab name.
