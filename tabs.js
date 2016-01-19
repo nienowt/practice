@@ -13,9 +13,13 @@ tab.handleClick = function(){
   $('#nav-tabs').on('click', 'li', function(){
     $('li').removeClass('tab-select');
     $(this).toggleClass('tab-select');
+    $('.newList').hide();
     var listCategory = $(this).text();
-    $('li').hasClass(listCategory).show; //show only list items with tab-specific class (hopefully)
+    if($('li').hasClass(listCategory)) {//false??
+      $('.'+ listCategory).show(); //show only list items with tab-specific class (hopefully)
+    };
   });
+  $('li.main').click();
 };
 
 tab.handleButton = function(){
