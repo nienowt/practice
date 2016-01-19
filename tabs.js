@@ -15,10 +15,8 @@ tab.handleClick = function(){
     $('li').removeClass('tab-select');
     $(this).toggleClass('tab-select');
     var listCategory = $(this).text();
-    console.log('this',$(this).text());
     $('ul').show();
-    $('ul').not('#nav-tabs').not('.' +listCategory).hide();
-    console.log(listCategory);
+    $('ul').not('nav ul').not('.' +listCategory).hide();
   });
   $('li.main').click();
 };

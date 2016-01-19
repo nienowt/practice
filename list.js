@@ -10,11 +10,11 @@ listItem.handleButton = function(){
     if (item) {
       if ($('li').hasClass('tab-select')) {
         var tabClass = $('.tab-select').text();
-        $('#list').append('<li class="newList dropshadow '+ tabClass +'">' + item + '</li>');
+        $('.'+tabClass).append('<li class="newList dropshadow">' + item + '</li>');
         $('#newItem').val('');
       };
     };
-    listItem.all.push(item);
+    listItem.all.push([tabClass,item]);
     localStorage.setItem('todo',JSON.stringify(listItem.all));
   });
 };
@@ -51,8 +51,12 @@ listItem.onPageLoad = function(){
   if(localStorage.todo){
     listItem.all = JSON.parse(localStorage.getItem('todo'));
     listItem.all.forEach(function(item){
-      var item = item;
-      $('#list').append('<div class="itemDiv"><li class="newList dropshadow">' + item + '</li></div>');
+
+      var insertItem = item[1];
+      var list = item[0];
+      console.log(insertItem);
+      console.log(list);
+      $('.'+list).append('<div class="itemDiv"><li class="newList dropshadow">' + insertItem + '</li></div>');
     });
   };
 };
